@@ -1,10 +1,13 @@
-def calcular_total(itens, desconto_percentual=0):
+def calcular_total(itens, desconto_percentual=0, cupom_desconto=None):
     """
     Calcula o total de uma compra.
 
     Cada item representa uma tupla no formato:
     (preco_unitario, quantidade)
     """
+    if cupom_desconto and cupom_desconto.lower() == "devops":
+        desconto_percentual += 5
+
     if not 0 <= desconto_percentual <= 100:
         raise ValueError("O desconto precisa estar entre 0 e 100.")
 
