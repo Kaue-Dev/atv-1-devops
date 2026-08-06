@@ -15,16 +15,22 @@ def test_total_com_dez_por_cento_de_desconto():
     assert calcular_total(itens, desconto_percentual=10) == 225.0
 
 
-def test_total_com_cupom_devops_adiciona_cinco_por_cento():
+def test_total_com_cupom_devops10_adiciona_dez_por_cento():
     itens = [(100.0, 1)]
 
-    assert calcular_total(itens, desconto_percentual=10, cupom_desconto="DEVOPS") == 85.0
+    assert calcular_total(itens, desconto_percentual=10, cupom_desconto="DEVOPS10") == 80.0
 
 
-def test_total_com_cupom_devops_minusculo():
+def test_total_com_cupom_devops10_minusculo():
     itens = [(100.0, 1)]
 
-    assert calcular_total(itens, cupom_desconto="devops") == 95.0
+    assert calcular_total(itens, cupom_desconto="devops10") == 90.0
+
+
+def test_total_com_cupom_invalido():
+    itens = [(100.0, 1)]
+
+    assert calcular_total(itens, cupom_desconto="DEVOPS") == 100.0
 
 
 def test_desconto_invalido():
