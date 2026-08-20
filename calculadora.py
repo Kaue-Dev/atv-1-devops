@@ -1,4 +1,9 @@
-def calcular_total(itens, desconto_percentual=0, cupom_desconto=None):
+def calcular_total(
+    itens,
+    desconto_percentual=0,
+    cupom_desconto=None,
+    frete_express=0,
+):
     """
     Calcula o total de uma compra.
 
@@ -19,4 +24,7 @@ def calcular_total(itens, desconto_percentual=0, cupom_desconto=None):
     valor_do_desconto = subtotal * desconto_percentual / 100
     total = subtotal - valor_do_desconto
 
-    return round(total, 2)
+    if cupom_desconto and cupom_desconto.lower() == "freteexpress" and total > 50:
+        frete_express = 0
+
+    return round(total + frete_express, 2)
